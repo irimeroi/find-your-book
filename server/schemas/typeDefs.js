@@ -2,36 +2,44 @@ const gql = String.raw;
 
 module.exports = gql`
     type User {
-        _id: ID!
-        username: String!
-        email: String!
-        savedBooks: [bookSchema]
+        _id: ID
+        username: String
+        email: String
+        bookCount: Int
+        savedBooks: [Book]
     }
 
     type Auth {
+        token: ID!
         user: User
-        token: ID
     }
 
-    type bookSchema {
+    type Book {
         authors: [String]
         description: String!
-        bookId: ID!
+        bookId: String
         image: String
         link: String
         title: String!
     }
 
-    type Mutation {
-        createUser(username: String!, email: String!, password: String! ): Auth
-        login(email: String!, password: String!): Auth
-        saveBook(authors: [String], description: String!, bookId: ID!, image: String, link: String, title: String!): User
+    input BookInput {
+        authors: [String]
+        description: String!
+        bookId: String!
+        image: String
+        link: String
+        title: String!
     }
 
     type Query {
-        hello: String
+        me: User
+    }
+
+    type Mutation {
+        addUser(username: String!, email: String!, password: String! ): Auth
+        login(email: String!, password: String!): Auth
+        saveBook(bookData: BookInput!): User
+        removeBook(bookId: ID!): User
     }
 `
-
-//saveBook
-//deleteBook
