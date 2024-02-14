@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-// const path = require('path');
+const path = require('path');
 const db = require('./config/connection');
 //DELETE LATER
 // const routes = require('./routes');
