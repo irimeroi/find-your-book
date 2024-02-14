@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const db = require('./config/connection');
-//DELETE LATER
 // const routes = require('./routes');
 const cors = require('cors');
 const { ApolloServer } = require('@apollo/server');
@@ -16,7 +15,6 @@ app.use(cors());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-//DELETE LATER
 // app.use(routes);
 
 const server = new ApolloServer({ typeDefs, resolvers });
